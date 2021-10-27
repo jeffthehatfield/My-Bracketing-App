@@ -23,7 +23,6 @@ import com.example.mybracketapp.Utils
 class BracketFragment(private val mActivity: AppCompatActivity, private val bucketData: BucketData) : BaseFragment<FragmentBracketBinding>(){
 
     private lateinit var bracketRecyclerView: RecyclerView
-    private lateinit var bracketStateAdapter: BracketStateAdapter
     private lateinit var columnAdapter: BracketColumnAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -35,7 +34,6 @@ class BracketFragment(private val mActivity: AppCompatActivity, private val buck
 
         bracketRecyclerView = mDataBinding.bracketsRecyclerView
         columnAdapter = BracketColumnAdapter(mActivity, bucketData.getColumns())
-        bracketStateAdapter = BracketStateAdapter(mActivity, this, bucketData.getColumns())
         bracketRecyclerView.adapter = columnAdapter
         bracketRecyclerView.layoutManager = LinearLayoutManager(mActivity, LinearLayoutManager.HORIZONTAL, false)
         bucketData.fragment = this
@@ -96,25 +94,5 @@ class BracketFragment(private val mActivity: AppCompatActivity, private val buck
 
         }
 
-    }
-
-    class BracketStateAdapter(private val mActivity: AppCompatActivity, fragment: Fragment, private val columns: ArrayList<ColumnData>) : FragmentStateAdapter(fragment) {
-
-        private val bracketFragment: ArrayList<BracketColumnFragment> = ArrayList()
-
-        override fun getItemCount(): Int {
-            return columns.size
-        }
-
-        override fun createFragment(position: Int): Fragment {
-            bracketFragment.add(BracketColumnFragment(mActivity, columns[position]))
-            return bracketFragment[bracketFragment.size-1]
-        }
-
-        fun updateMatches() {
-            bracketFragment.forEach {
-                it.updateMatches()
-            }
-        }
     }
 }

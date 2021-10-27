@@ -117,32 +117,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/win_via_spinner"
-            android:layout_marginTop="14dp">
-
-            <include
-                android:id="@+id/layout_points_win_condition"
-                layout="@layout/layout_points_win_condition"
-                app:match="@{match}"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"/>
-
-            <include
-                android:id="@+id/layout_submission_win_condition"
-                layout="@layout/layout_submission_win_condition"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"/>
-
-            <include
-                android:id="@+id/layout_time_win_condition"
-                layout="@layout/layout_points_win_condition"
-                app:match="@{match}"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"/>
-
-        </FrameLayout>
+            android:layout_marginTop="14dp"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/match_save_button"

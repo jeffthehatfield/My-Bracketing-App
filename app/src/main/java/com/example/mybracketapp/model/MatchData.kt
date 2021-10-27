@@ -18,9 +18,9 @@ class MatchData(val index: Int, private val callback: MatchCallback, val winnerN
         const val WIN_COND_POINTS = "Points"
         const val WIN_COND_SUBMISSION = "Submission"
         const val WIN_COND_TIME = "Time"
-        private const val WIN_COND_DQ = "DQ"
-        private const val WIN_COND_TKO = "TKO"
-        private const val WIN_COND_KO = "KO"
+        const val WIN_COND_DQ = "DQ"
+        const val WIN_COND_TKO = "TKO"
+        const val WIN_COND_KO = "KO"
 
         @JvmStatic
         val WIN_COND_ARRAY = arrayOf(WIN_COND_POINTS, WIN_COND_SUBMISSION, WIN_COND_TIME, WIN_COND_DQ, WIN_COND_TKO, WIN_COND_KO)
@@ -37,14 +37,23 @@ class MatchData(val index: Int, private val callback: MatchCallback, val winnerN
 
     fun setPointResult(competitorTopPoints: Int, competitorBottomPoints: Int) {
         winCondition = WIN_COND_POINTS
+        setPoints(competitorTopPoints, competitorBottomPoints)
+    }
+
+    fun setTimeResult(competitorTopPoints: Int, competitorBottomPoints: Int) {
+        winCondition = WIN_COND_TIME
+        setPoints(competitorTopPoints, competitorBottomPoints)
+    }
+
+    private fun setPoints(competitorTopPoints: Int, competitorBottomPoints: Int) {
         if(competitorTopPoints > competitorBottomPoints){
             matchCompetitorTop.winner = true
-        } 
+        }
         else{
             matchCompetitorBottom.winner = true
         }
         getWinner()?.matchResult = SLApplication.getContext().getString(
-            R.string.win_condition_points_label,
+            if(winCondition == WIN_COND_POINTS) R.string.win_condition_points_label else R.string.win_condition_time_label,
             if(didTopWin()) competitorTopPoints else competitorBottomPoints)
         getLoser()?.matchResult = if(didTopWin()) competitorBottomPoints.toString() else competitorTopPoints.toString()
         setResults()
@@ -53,14 +62,38 @@ class MatchData(val index: Int, private val callback: MatchCallback, val winnerN
     fun setSubmissionResult(sub: String, competitor: MatchCompetitor) {
         winCondition = WIN_COND_SUBMISSION
         submission = sub
+        setWinner(competitor)
+        getWinner()?.matchResult = SLApplication.getContext().getString(R.string.win_condition_submission_label, sub)
+        setResults()
+    }
+
+    fun setDQResult(competitor: MatchCompetitor){
+        winCondition = WIN_COND_DQ
+        setWinner(competitor)
+        getLoser()?.matchResult = SLApplication.getContext().getString(R.string.loser_condition_dq_label)
+        setResults()
+    }
+
+    fun setTKOResult(competitor: MatchCompetitor){
+        winCondition = WIN_COND_TKO
+        setWinner(competitor)
+        getWinner()?.matchResult = SLApplication.getContext().getString(R.string.win_condition_tko_label)
+        setResults()
+    }
+
+    fun setKOResult(competitor: MatchCompetitor){
+        winCondition = WIN_COND_KO
+        setWinner(competitor)
+        getWinner()?.matchResult = SLApplication.getContext().getString(R.string.win_condition_ko_label)
+        setResults()
+    }
+
+    private fun setWinner(competitor: MatchCompetitor) {
         if(competitor == matchCompetitorTop) {
             matchCompetitorTop.winner = true
         } else{
             matchCompetitorBottom.winner = true
         }
-        getWinner()?.matchResult = SLApplication.getContext().getString(
-            R.string.win_condition_submission_label, sub)
-        setResults()
     }
 
     private fun setResults() {
@@ -167,23 +200,18 @@ class MatchData(val index: Int, private val callback: MatchCallback, val winnerN
     fun addCompetitor(competitor: Competitor) {
         when {
             matchCompetitorTop.competitor.isPlaceholder() -> {
-                Log.d("Jeff", "Added ${competitor.name()} as Top Competitor")
                 matchCompetitorTop = MatchCompetitor(competitor, MatchCompetitor.Color.Red)
             }
             matchCompetitorBottom.competitor.isPlaceholder() -> {
-                Log.d("Jeff", "Added ${competitor.name()} as Bottom Competitor")
                 matchCompetitorBottom = MatchCompetitor(competitor, MatchCompetitor.Color.Blue)
-            }
-            else -> {
-                Log.d("Jeff", "DID NOT ADD ${competitor.name()} as Competitor")
             }
         }
     }
 
     fun getTitle(): String {
         when {
-            winnerNextIndex == FIRST_PLACE && loserNextIndex == SECOND_PLACE -> return "Winners"
-            winnerNextIndex == THIRD_PLACE -> return "Losers"
+            winnerNextIndex == FIRST_PLACE && loserNextIndex == SECOND_PLACE -> return SLApplication.getContext().getString(R.string.winner_bracket)
+            winnerNextIndex == THIRD_PLACE -> return SLApplication.getContext().getString(R.string.third_place_bracket)
         }
         return ""
     }

@@ -47,4 +47,11 @@
     <string name="competitors_points">%s\'s Points</string>
     <string name="win_condition_points_label">Points: %d</string>
     <string name="win_condition_submission_label">Submission: %s</string>
+    <string name="win_condition_time_label">Time: %s</string>
+    <string name="loser_condition_dq_label">Disqualified</string>
+    <string name="win_condition_tko_label">Technical Knockout</string>
+    <string name="win_condition_ko_label">Knockout</string>
+
+    <string name="winner_bracket">Winners</string>
+    <string name="third_place_bracket">Third Place</string>
 </resources>
