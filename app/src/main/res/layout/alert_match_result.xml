@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="context"
+            type="android.content.Context" />
+
+        <variable
+            name="match"
+            type="com.example.mybracketapp.model.MatchData" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/alert_background"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/match_result_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="26sp"
+            android:textColor="@color/text_black"
+            android:textStyle="bold"
+            android:text="@string/match_result"/>
+
+        <LinearLayout
+            android:id="@+id/match_winner_selector_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/match_result_title"
+            android:layout_marginTop="28dp"
+            android:orientation="horizontal"
+            android:weightSum="11">
+
+            <TextView
+                android:id="@+id/competitor_top_selector"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:paddingStart="28dp"
+                android:paddingEnd="28dp"
+                android:background="@drawable/ic_square"
+                android:backgroundTint="@{match.competitorTop.beltColor25Resource}"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:textColor="@{match.competitorTop.beltColorResource}"
+                android:text="@{match.competitorTop.competitor.name()}"
+                android:layout_weight="5"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+
+            <TextView
+                android:id="@+id/competitor_bottom_selector"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:paddingStart="28dp"
+                android:paddingEnd="28dp"
+                android:background="@drawable/ic_square"
+                android:backgroundTint="@{match.competitorBottom.beltColor25Resource}"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:textColor="@{match.competitorBottom.beltColorResource}"
+                android:text="@{match.competitorBottom.competitor.name()}"
+                android:layout_weight="5"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/win_via_prompt_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/match_winner_selector_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            android:textSize="22sp"
+            android:textColor="@color/text_black"
+            android:textStyle="bold"
+            android:text="@string/win_via_prompt"/>
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/win_via_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/win_via_prompt_text"
+            app:layout_constraintBottom_toBottomOf="@id/win_via_prompt_text"
+            app:layout_constraintStart_toEndOf="@id/win_via_prompt_text"
+            android:layout_marginStart="4dp"
+            android:entries="@array/win_via_array"
+            android:prompt="@string/win_via_prompt"
+            style="@style/Base.Widget.AppCompat.Spinner.Underlined"/>
+
+        <FrameLayout
+            android:id="@+id/win_via_method_base_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/win_via_spinner"
+            android:layout_marginTop="14dp">
+
+            <include
+                android:id="@+id/layout_points_win_condition"
+                layout="@layout/layout_points_win_condition"
+                app:match="@{match}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+            <include
+                android:id="@+id/layout_submission_win_condition"
+                layout="@layout/layout_submission_win_condition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+            <include
+                android:id="@+id/layout_time_win_condition"
+                layout="@layout/layout_points_win_condition"
+                app:match="@{match}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+        </FrameLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/match_save_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/win_via_method_base_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/button_red_background"
+            android:layout_marginTop="18dp"
+            android:textSize="22sp"
+            style="@style/buttonStyle"
+            android:enabled="false"
+            android:text="@string/save"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

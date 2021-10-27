@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">My Bracket App</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="registration">Registration</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="school_name">School Name</string>
+    <string name="birthdate">Birthdate</string>
+    <string name="age">Age</string>
+    <string name="weight">Weight</string>
+    <string name="skill_level">Skill Level</string>
+    <string name="belt_colors">Belt Colors</string>
+    <string name="red">Red</string>
+    <string name="blue">Blue</string>
+    <string name="both">Both</string>
+    <string name="neither">Neither</string>
+    <string name="submit">Submit</string>
+    <string name="to_be_determined_abbr">TBD</string>
+    <string name="match_result">Match Result</string>
+    <string name="save">Save</string>
+
+    <string name="win_via_prompt">Choose win method:&#160;</string>
+    <string name="points">Points</string>
+    <string name="submission">Submission</string>
+    <string name="time">Time</string>
+    <string name="dq">DQ</string>
+    <string name="tko">TKO</string>
+    <string name="ko">KO</string>
+    <string-array name="win_via_array">
+        <item>@string/points</item>
+        <item>@string/submission</item>
+        <item>@string/time</item>
+        <item>@string/dq</item>
+        <item>@string/tko</item>
+        <item>@string/ko</item>
+    </string-array>
+    <string name="armbar">Armbar</string>
+    <string name="ankle_lock">Ankle Lock</string>
+    <string name="other">Other</string>
+    <string-array name="submissions_array">
+        <item>@string/armbar</item>
+        <item>@string/ankle_lock</item>
+        <item>@string/other</item>
+    </string-array>
+    <string name="competitors_points">%s\'s Points</string>
+    <string name="win_condition_points_label">Points: %d</string>
+    <string name="win_condition_submission_label">Submission: %s</string>
+</resources>

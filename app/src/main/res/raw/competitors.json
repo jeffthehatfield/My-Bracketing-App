@@ -1,0 +1,131 @@
+{
+  "version": 0.1,
+  "competitors": [
+    {
+      "id": 1,
+      "first_name": "Jeff",
+      "last_name": "Hatfield",
+      "weight": 180,
+      "gender": "Male",
+      "age": 31,
+      "skill_level": "Expert"
+    },
+    {
+      "id": 2,
+      "first_name": "171Male",
+      "last_name": "34Expert",
+      "weight": 171,
+      "gender": "Male",
+      "age": 34,
+      "skill_level": "Expert"
+    },
+    {
+      "id": 3,
+      "first_name": "172Male",
+      "last_name": "32Expert",
+      "weight": 172,
+      "gender": "Male",
+      "age": 32,
+      "skill_level": "Expert"
+    },
+    {
+      "id": 4,
+      "first_name": "173Male",
+      "last_name": "30Expert",
+      "weight": 173,
+      "gender": "Male",
+      "age": 30,
+      "skill_level": "Expert"
+    },
+    {
+      "id": 5,
+      "first_name": "150Male",
+      "last_name": "18Beginner",
+      "weight": 150,
+      "gender": "Male",
+      "age": 18,
+      "skill_level": "Beginner"
+    },
+    {
+      "id": 6,
+      "first_name": "152Male",
+      "last_name": "18Beginner",
+      "weight": 152,
+      "gender": "Male",
+      "age": 18,
+      "skill_level": "Beginner"
+    },
+    {
+      "id": 7,
+      "first_name": "149Male",
+      "last_name": "22Beginner",
+      "weight": 149,
+      "gender": "Male",
+      "age": 22,
+      "skill_level": "Beginner"
+    },
+    {
+      "id": 8,
+      "first_name": "129Male",
+      "last_name": "14Beginner",
+      "weight": 129,
+      "gender": "Male",
+      "age": 14,
+      "skill_level": "Beginner"
+    },
+    {
+      "id": 9,
+      "first_name": "125Male",
+      "last_name": "14Beginner",
+      "weight": 125,
+      "gender": "Male",
+      "age": 14,
+      "skill_level": "Beginner"
+    },
+    {
+      "id": 10,
+      "first_name": "129Male",
+      "last_name": "16Beginner",
+      "weight": 129,
+      "gender": "Male",
+      "age": 16,
+      "skill_level": "Beginner"
+    },
+    {
+      "id": 11,
+      "first_name": "Jeff2",
+      "last_name": "Hatfield",
+      "weight": 180,
+      "gender": "Male",
+      "age": 31,
+      "skill_level": "Expert"
+    },
+    {
+      "id": 12,
+      "first_name": "171Male",
+      "last_name": "34Expert",
+      "weight": 171,
+      "gender": "Male",
+      "age": 34,
+      "skill_level": "Expert"
+    },
+    {
+      "id": 13,
+      "first_name": "172Male",
+      "last_name": "32Expert",
+      "weight": 172,
+      "gender": "Male",
+      "age": 32,
+      "skill_level": "Expert"
+    },
+    {
+      "id": 14,
+      "first_name": "173Male",
+      "last_name": "30Expert",
+      "weight": 173,
+      "gender": "Male",
+      "age": 30,
+      "skill_level": "Expert"
+    }
+  ]
+}

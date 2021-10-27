@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="sambo_red">#fe0000</color>
+    <color name="sambo_blue">#0000ff</color>
+    <color name="sambo_red_25">#40fe0000</color>
+    <color name="sambo_blue_25">#400000ff</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="text_black">#262626</color>
+    <color name="text_grey">#555555</color>
+    <color name="button_bg_disabled">#868686</color>
+
+    <color name="black_30">#40000000</color>
+
+    <color name="bracket_background">#1e2226</color>
+    <color name="bracket_match_background">#3a4146</color>
+    <color name="bracket_color">#262e40</color>
+
+    <color name="gold">#D9A441</color>
+    <color name="silver">#CCC2C2</color>
+    <color name="bronze">#965A38</color>
+
+</resources>

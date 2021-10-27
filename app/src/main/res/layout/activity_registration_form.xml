@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.example.mybracketapp.viewmodel.RegistrationFormViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:popupTheme="@style/Theme.MyBracketingRegistration.AppBarOverlay" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/white"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp">
+
+            <ImageView
+                android:id="@+id/sambo_logo"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.025"
+                app:layout_constraintWidth_percent="0.25"
+                app:layout_constraintDimensionRatio="1:1"
+                android:src="@drawable/sambo_texas_logo"/>
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/sambo_logo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="12dp"
+                android:textSize="34sp"
+                android:textColor="@color/text_black"
+                android:textStyle="bold"
+                android:text="@string/registration"/>
+
+            <EditText
+                android:id="@+id/first_name_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.48"
+                app:layout_constraintHorizontal_bias="0"
+                android:layout_marginTop="18dp"
+                android:hint="@string/first_name"
+                android:inputType="textPersonName"
+                android:textSize="22sp"
+                android:nextFocusDown="@id/last_name_edit_text"/>
+
+            <EditText
+                android:id="@+id/last_name_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.48"
+                app:layout_constraintHorizontal_bias="1"
+                android:layout_marginTop="18dp"
+                android:hint="@string/last_name"
+                android:inputType="textPersonName"
+                android:textSize="22sp"
+                android:nextFocusDown="@id/school_name_edit_text"
+                android:nextFocusForward="@id/school_name_edit_text"
+                android:nextFocusRight="@id/school_name_edit_text"/>
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/school_name_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/first_name_edit_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.48"
+                app:layout_constraintHorizontal_bias="0"
+                android:layout_marginTop="12dp"
+                android:hint="@string/school_name"
+                android:inputType="textCapWords"
+                android:textSize="22sp"
+                android:adapter="@{viewModel.schoolNameAdapter}"
+                android:nextFocusDown="@id/birthdate_edit_text"
+                android:nextFocusForward="@id/birthdate_edit_text"
+                android:nextFocusRight="@id/birthdate_edit_text"
+                android:nextClusterForward="@id/birthdate_edit_text"/>
+
+            <EditText
+                android:id="@+id/birthdate_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/first_name_edit_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.34"
+                app:layout_constraintHorizontal_bias="0.785"
+                android:layout_marginTop="12dp"
+                android:textSize="22sp"
+                android:hint="@string/birthdate"
+                android:text="@{viewModel.dateOfBirthString}"
+                android:clickable="true"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false" />
+
+            <EditText
+                android:id="@+id/age_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/first_name_edit_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.14"
+                app:layout_constraintHorizontal_bias="1"
+                android:layout_marginTop="12dp"
+                android:textSize="22sp"
+                android:hint="@string/age"
+                android:text="@{viewModel.ageString}"
+                android:clickable="true"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false" />
+
+            <Spinner
+                android:id="@+id/skill_level_spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/school_name_edit_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.48"
+                app:layout_constraintHorizontal_bias="0"
+                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                android:textSize="22sp"
+                android:adapter="@{viewModel.skillLevelAdapter}"/>
+
+            <TextView
+                android:id="@+id/belt_color_text_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/school_name_edit_text"
+                app:layout_constraintStart_toStartOf="@id/birthdate_edit_text"
+                app:layout_constraintEnd_toEndOf="@id/age_edit_text"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textColor="@color/text_black"
+                android:text="@string/belt_colors" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/belt_colors_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/belt_color_text_view"
+                app:layout_constraintStart_toStartOf="@id/belt_color_text_view"
+                app:layout_constraintEnd_toEndOf="@id/belt_color_text_view"
+                app:layout_constraintWidth_percent="0.34"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/red_checkbox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/sambo_red"
+                            android:text="@string/red"
+                            android:layout_weight="1"/>
+
+                        <CheckBox
+                            android:id="@+id/blue_checkbox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/sambo_blue"
+                            android:text="@string/blue"
+                            android:layout_weight="1" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <CheckBox
+                        android:id="@+id/both_checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/black"
+                        android:text="@string/both"
+                        android:layout_weight="1"/>
+
+                    <CheckBox
+                        android:id="@+id/neither_checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/black"
+                        android:text="@string/neither"
+                        android:layout_weight="1"
+                        android:checked="true"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <EditText
+                android:id="@+id/weight_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/belt_colors_layout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.24"
+                app:layout_constraintHorizontal_bias="0"
+                android:layout_marginTop="12dp"
+                android:hint="@string/weight"
+                android:inputType="number"
+                android:textSize="22sp"
+                android:text="@{viewModel.weight.toString()}"/>
+
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/weight_seekbar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/weight_edit_text"
+                app:layout_constraintBottom_toBottomOf="@id/weight_edit_text"
+                app:layout_constraintStart_toStartOf="@id/weight_edit_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.54"
+                app:layout_constraintHorizontal_bias="0.55"
+                android:layout_marginTop="12dp"
+                android:min="90"
+                android:max="300"
+                android:progress="@{viewModel.weight}" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/weight_edit_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintVertical_bias="0.8"
+                android:paddingStart="84dp"
+                android:paddingEnd="84dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="22sp"
+                android:textColor="@color/white"
+                android:text="@string/submit"
+                android:background="@color/sambo_red"
+                style="null"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
